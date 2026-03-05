@@ -16,13 +16,19 @@ function Reg() {
     const submit = async () => {
         try {
             const res = await axios.post("https://react-backend-1-eepv.onrender.com/register",
-                data
+                data,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    withCredentials: false
+                }
             )
             alert(res.data);
         } catch (xyz) {
             console.error("Error details:", xyz);
             const errorMsg = xyz.response?.data || xyz.message || "Connection Error";
-            alert(errorMsg);
+            alert("Error: " + errorMsg);
         }
     };
 
