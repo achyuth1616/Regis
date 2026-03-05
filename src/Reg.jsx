@@ -20,7 +20,9 @@ function Reg() {
             )
             alert(res.data);
         } catch (xyz) {
-            alert(xyz.response?.data || "Error");
+            console.error("Error details:", xyz);
+            const errorMsg = xyz.response?.data || xyz.message || "Connection Error";
+            alert(errorMsg);
         }
     };
 
